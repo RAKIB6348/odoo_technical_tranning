@@ -8,9 +8,26 @@ class EstateProperty(models.Model):
     name = fields.Char(string='Title', required=True)
     description = fields.Text(string='Description')
     postcode = fields.Char(string='Postcode')
-    date_availability = fields.Date(string='Available From', copy=False, default='2023-01-01')
+    state = fields.Selection(
+        string='State',
+        selection=[('new', 'New'), 
+                   ('offer_received', 'Offer Received'), 
+                   ('offer_accepted', 'Offer Accepted'), 
+                   ('sold', 'Sold'), 
+                   ('canceled', 'Canceled')],
+        default='new',
+        copy=False
+    )
+
+
+    def default_date_availability(self):
+        return fields.Date.today()
+
+
+    date_availability = fields.Date(string='Available From', copy=False, default=default_date_availability)
     expected_price = fields.Float(string='Expected Price', required=True)
     selling_price = fields.Float(string='Selling Price', copy=False)
+    best_offer = fields.Float(string='Best Offer', copy=False)
     bedrooms = fields.Integer(string='Bedrooms', default=2)
     living_area = fields.Integer(string='Living Area (sqm)')
     facades = fields.Integer(string='Facades')
@@ -19,6 +36,11 @@ class EstateProperty(models.Model):
     garden_area = fields.Integer(string='Garden Area (sqm)')
     garden_orientation = fields.Selection(
         string='Garden Orientation',
-        selection=[('north', 'North'), ('south', 'South'), ('east', 'East'), ('west', 'West')]
+        selection=[('north', 'North'), 
+                   ('south', 'South'), 
+                   ('east', 'East'), 
+                   ('west', 'West')],
+        default="north",
+        copy=False
     )
-    active = fields.Boolean(string='Active', default=True)
+    active = fields.Boolean(string='Active', default=True, invisible=True)
