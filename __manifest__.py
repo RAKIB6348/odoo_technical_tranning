@@ -11,6 +11,7 @@
 
         #VIEWS
         'views/menu.xml',
+        'views/estate_property.xml',
 
     ],
     'installable' : True,
