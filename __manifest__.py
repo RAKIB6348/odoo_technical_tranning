@@ -9,6 +9,9 @@
         #SECURITY
         'security/ir.model.access.csv',
 
+        #VIEWS
+        'views/menu.xml',
+
     ],
     'installable' : True,
     'auto_install' : False,

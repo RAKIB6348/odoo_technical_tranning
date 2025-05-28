@@ -16,7 +16,8 @@ class EstateProperty(models.Model):
                    ('sold', 'Sold'), 
                    ('canceled', 'Canceled')],
         default='new',
-        copy=False
+        copy=False,
+        required=True
     )
 
 
