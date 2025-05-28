@@ -5,7 +5,11 @@
     'summary' : 'This is a real estate module',
     'license' : 'LGPL-3',
     'depends' : [],
-    'data' : [],
+    'data' : [
+        #SECURITY
+        'security/ir.model.access.csv',
+
+    ],
     'installable' : True,
     'auto_install' : False,
     'application' : True,
