@@ -10,4 +10,9 @@
     name="Advertisement"
     parent="menu_estate_root"/>
 
+
+    <menuitem id="menu_settings_root"
+    name="Settings"
+    parent="menu_estate_root"/>
+
 </odoo>
