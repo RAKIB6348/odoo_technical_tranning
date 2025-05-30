@@ -45,3 +45,6 @@ class EstateProperty(models.Model):
         copy=False
     )
     active = fields.Boolean(string='Active', default=True, invisible=True)
+
+    #many2one relation
+    property_type_id = fields.Many2one('estate.property.type', string='Property Type')
