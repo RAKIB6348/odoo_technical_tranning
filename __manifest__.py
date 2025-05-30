@@ -4,7 +4,7 @@
     'description' : 'This is a real estate module',
     'summary' : 'This is a real estate module',
     'license' : 'LGPL-3',
-    'depends' : [],
+    'depends' : ['contacts'],
     'data' : [
         #SECURITY
         'security/ir.model.access.csv',

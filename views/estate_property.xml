@@ -47,10 +47,14 @@
                     <h1>
                         <field name="name"/>
                     </h1>
+                    <h2>
+                        <field name="tag_ids" widget="many2many_tags" placeholder="Tags"/>
+                    </h2>
                 </div>
                 <group>
                     <!-- Add your fields here -->
                     <group>
+                        <field name="property_type_id"/>
                         <field name="postcode"/>
                         <field name="date_availability"/>
                     </group>
@@ -71,6 +75,22 @@
                             <field name="garden_area"/>
                             <field name="garden_orientation"/>
                         </group>
+                    </page>
+                    <page string="Offers">
+                        <field name="offer_ids">
+                            <tree>
+                                <field name="price"/>
+                                <field name="partner_id"/>
+                                <field name="status"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <field name="price"/>
+                                    <field name="partner_id"/>
+                                    <field name="status"/>
+                                </group>
+                            </form>
+                        </field>
                     </page>
                 </notebook>
             </sheet>
