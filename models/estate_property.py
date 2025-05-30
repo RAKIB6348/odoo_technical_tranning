@@ -50,3 +50,5 @@ class EstateProperty(models.Model):
     property_type_id = fields.Many2one('estate.property.type', string='Property Type')
     # one2many relation
     offer_ids = fields.One2many('estate.property.offer', 'property_id', string='Offers')
+    # many2many relation
+    tag_ids = fields.Many2many('estate.property.tag', string='Tags')
