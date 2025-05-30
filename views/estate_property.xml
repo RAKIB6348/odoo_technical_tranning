@@ -1,4 +1,22 @@
 <odoo>
+    <!-- estate.property search view -->
+    <record id="estate_property_view_search" model="ir.ui.view">
+        <field name="name">estate.property.view.search</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <search string="Search Description">
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="postcode"/>
+                <filter name="state_new" string="New" domain="[('state','=','new')]"/>
+                <filter name="state_offer_received" string="Offer Received" domain="[('state','=','offer_received')]"/>
+                <filter name="state_offer_accepted" string="Offer Accepted" domain="[('state','=','offer_accepted')]"/> 
+                <filter name="state_sold" string="Sold" domain="[('state','=','sold')]"/>
+                <filter name="state_canceled" string="Canceled" domain="[('state','=','canceled')]"/>
+                <filter name="group_by_postcode" string="Postcode" context="{'group_by': 'postcode'}"/>
+            </search>
+        </field>
+    </record>
 
     <!-- estate.property tree view -->
     <record id="estate_property_view_tree" model="ir.ui.view">
