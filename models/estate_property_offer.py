@@ -2,7 +2,7 @@ from odoo import fields, models, api
 
 
 class PropertyOffer(models.Model):
-    _name = "property.offer"
+    _name = "estate.property.offer"
     _description = "Property Offer"
 
 
