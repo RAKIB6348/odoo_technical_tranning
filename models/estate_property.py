@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from dateutil.relativedelta import relativedelta
 
 
@@ -66,9 +66,27 @@ class EstateProperty(models.Model):
             record.best_offer = max(record.offer_ids.mapped('price')) if record.offer_ids else 0.0
 
 
-
     # compute field
     @api.depends('living_area', 'garden_area')
     def _compute_total_area(self):
         for record in self:
             record.total_area = record.living_area + record.garden_area
+
+    # onchange function
+    @api.onchange('garden')
+    def _onchange_garden(self):
+        for estate in self:
+            if not estate.garden:
+                estate.garden_area = 0
+                estate.garden_orientation = False
+
+    # @api.onchange('date_availability')
+    # def _onchange_date_availability(self):
+    #     for estate in self:
+    #         return {
+    #             'warning' : {
+
+    #                 'title': _('Warning'),
+    #                 'message': _('My Message')
+    #             }
+    #         }

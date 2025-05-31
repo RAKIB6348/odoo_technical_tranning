@@ -1,5 +1,8 @@
-from odoo import fields, models, api
+from odoo import fields, models, api, _
 from dateutil.relativedelta import relativedelta
+from odoo.exceptions import UserError
+
+
 
 
 
@@ -35,4 +38,14 @@ class PropertyOffer(models.Model):
     def _inverse_date_deadline(self):
         for record in self:
             record.validity = (record.date_deadline - fields.Date.today()).days
+
+    def action_accept(self):
+        if "accepted" in self.property_id.offer_ids.mapped('status'):
+            raise UserError(_("Offer already accepted"))
+        self.status = "accepted"
+        
+    def action_refuse(self):
+        self.status = "refused"
+
+
 

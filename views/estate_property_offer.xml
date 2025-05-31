@@ -1,0 +1,62 @@
+<odoo>
+    <!-- estate.property.offer tree view -->
+    <record id="estate_property_offer_view_tree" model="ir.ui.view">
+        <field name="name">estate.property.offer.view.tree</field>
+        <field name="model">estate.property.offer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="price"/>
+                <field name="partner_id"/>
+                <field name="property_id"/>
+                <field name="validity"/>
+                <field name="date_deadline"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- estate.property.offer form view -->
+    <record id="estate_property_offer_view_form" model="ir.ui.view">
+        <field name="name">estate.property.offer.view.form</field>
+        <field name="model">estate.property.offer</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <group>
+                            <field name="price"/>
+                            <field name="status"/>
+                            <field name="validity"/>
+                        </group>
+                        <group>
+                            <field name="date_deadline" readonly="1"/>
+                            <field name="partner_id"/>
+                            <field name="property_id"/>
+                            <field name="property_type_id" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- model.name action window -->
+    <record id="action_property_offer" model="ir.actions.act_window">
+        <field name="name">Property Offer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">estate.property.offer</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>    
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_offer" 
+    name="Property Offer" 
+    parent="menu_settings_root" 
+    action="action_property_offer" 
+    sequence="2"/>
+
+</odoo>
