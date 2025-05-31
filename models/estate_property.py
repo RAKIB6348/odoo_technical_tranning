@@ -1,3 +1,4 @@
+from jsonschema import ValidationError
 from odoo import models, fields, api, _
 from dateutil.relativedelta import relativedelta
 
@@ -80,13 +81,9 @@ class EstateProperty(models.Model):
                 estate.garden_area = 0
                 estate.garden_orientation = False
 
-    # @api.onchange('date_availability')
-    # def _onchange_date_availability(self):
-    #     for estate in self:
-    #         return {
-    #             'warning' : {
-
-    #                 'title': _('Warning'),
-    #                 'message': _('My Message')
-    #             }
-    #         }
+    
+    @api.constrains('selling_price')
+    def _check_selling_price(self):
+        for rec in self:
+            if rec.selling_price < 50000:
+                raise ValidationError(_("Selling price must be greater than 50000")))
